@@ -11,13 +11,20 @@ function sortearAmigo() {
     let numeroLimite = ListaDeAmigos.length;
     let numeroEscolhido = Math.floor(Math.random() * numeroLimite);
     let msgEscolhido = `O amigo secreto sorteado é: ${ListaDeAmigos[numeroEscolhido]}`;
-
-    exibirTextoNaTela('#listaAmigos', msgEscolhido);
+    exibirTextoNaTela('#resultado', msgEscolhido);
 }
 
 function exibirTextoNaTela(tag, texto) {
-    let campo = document.querySelector(tag);
-    campo.innerHTML = texto;
+    const campo = document.querySelector(tag);
+    // Se for um array, transforma cada item em um <li>
+    if (Array.isArray(texto)) {
+        campo.innerHTML = texto.map(nome => `<li>${nome}</li>`).join('');
+    } else {
+        // Se for uma string, cria um único <li>
+        const limpa = document.querySelector('#listaAmigos');
+        limpa.innerHTML = '';
+        campo.innerHTML = `<li>${texto}</li>`;
+    }
 }
 
 function limparCampo() {

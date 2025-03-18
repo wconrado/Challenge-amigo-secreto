@@ -134,6 +134,10 @@ ul {
     margin: 20px 0;
 }
 
+.name-list {
+    color: #05DF05;
+}
+
 .result-list {
     margin-top: 15px;
     color: #05DF05;
